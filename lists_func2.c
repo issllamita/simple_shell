@@ -9,7 +9,7 @@
  * @lval: length of the value.
  * Return: address of the head.
  */
-var_ls *put_var_end(r_var **head, int lvar, char *var, int lval)
+var_ls *put_var_end(var_ls **head, int lvar, char *var, int lval)
 {
 	var_ls *new, *tmp;
 

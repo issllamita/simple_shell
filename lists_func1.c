@@ -61,7 +61,7 @@ void free_line_list(line_ls **head)
  * @spt: separator found (; | &).
  * Return: address of the head.
  */
-spt_ls *put_spt_end(sep_ls **head, char spt)
+spt_ls *put_spt_end(spt_ls **head, char spt)
 {
 	spt_ls *new, *tmp;
 
@@ -94,8 +94,8 @@ spt_ls *put_spt_end(sep_ls **head, char spt)
  */
 void free_spt_list(spt_ls **head)
 {
-	sep_list *tmp;
-	sep_list *current;
+	spt_ls *tmp;
+	spt_ls *current;
 
 	if (head != NULL)
 	{
