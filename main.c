@@ -60,7 +60,7 @@ int main(int ac, char **argv)
 	(void) ac;
 
 	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
+	set_data(&datash, argv);
 	sh_loop(&datash);
 	free_data(&datash);
 	if (datash.status < 0)

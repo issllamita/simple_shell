@@ -68,7 +68,7 @@ void sh_loop(data_sh *datash)
 		}
 		else
 		{
-		i	loop = 0;
+			loop = 0;
 			free(read);
 		}
 	}

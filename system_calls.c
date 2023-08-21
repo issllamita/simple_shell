@@ -58,7 +58,7 @@ void show_line(char **lineptr, size_t *n, char *buffer, size_t j)
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 {
 	int i;
-	static ssize_t read;
+	static ssize_t input;
 	ssize_t retval;
 	char *buffer;
 	char t = 'z';
@@ -67,7 +67,7 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 		fflush(stream);
 	else
 		return (-1);
-	read = 0;
+	input = 0;
 
 	buffer = malloc(sizeof(char) * BUFSIZE);
 	if (buffer == 0)
@@ -80,21 +80,21 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 			free(buffer);
 			return (-1);
 		}
-		if (i == 0 && read != 0)
+		if (i == 0 && input != 0)
 		{
-			read++;
+			input++;
 			break;
 		}
-		if (read >= BUFSIZE)
-			buffer = _realloc(buffer, read, read + 1);
-		buffer[read] = t;
-		read++;
+		if (input >= BUFSIZE)
+			buffer = _realloc(buffer, input, input + 1);
+		buffer[input] = t;
+		input++;
 	}
-	buffer[read] = '\0';
-	show_line(lineptr, n, buffer, read);
-	retval = read;
+	buffer[input] = '\0';
+	show_line(lineptr, n, buffer, input);
+	retval = input;
 	if (i != 0)
-		read = 0;
+		input = 0;
 	return (retval);
 }
 

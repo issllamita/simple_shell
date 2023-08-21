@@ -20,7 +20,7 @@ void check_env(var_ls **h, char *rd, data_sh *data)
 			if (_envr[row][chr] == '=')
 			{
 				lval = _strlen(_envr[row] + chr + 1);
-				put_var_node(h, j, _envr[row] + chr + 1, lval);
+				put_var_end(h, j, _envr[row] + chr + 1, lval);
 				return;
 			}
 
@@ -37,7 +37,7 @@ void check_env(var_ls **h, char *rd, data_sh *data)
 			break;
 	}
 
-	put_var_node(h, j, NULL, 0);
+	put_var_end(h, j, NULL, 0);
 }
 
 /**
@@ -60,19 +60,19 @@ int check_var(var_ls **h, char *rd, char *st, data_sh *data)
 		if (rd[i] == '$')
 		{
 			if (rd[i + 1] == '?')
-				put_var_node(h, 2, st, lst), i++;
+				put_var_end(h, 2, st, lst), i++;
 			else if (rd[i + 1] == '$')
-				put_var_node(h, 2, data->pid, lpd), i++;
+				put_var_end(h, 2, data->pid, lpd), i++;
 			else if (rd[i + 1] == '\n')
-				put_var_node(h, 0, NULL, 0);
+				put_var_end(h, 0, NULL, 0);
 			else if (rd[i + 1] == '\0')
-				put_var_node(h, 0, NULL, 0);
+				put_var_end(h, 0, NULL, 0);
 			else if (rd[i + 1] == ' ')
-				put_var_node(h, 0, NULL, 0);
+				put_var_end(h, 0, NULL, 0);
 			else if (rd[i + 1] == '\t')
-				put_var_node(h, 0, NULL, 0);
+				put_var_end(h, 0, NULL, 0);
 			else if (rd[i + 1] == ';')
-				put_var_node(h, 0, NULL, 0);
+				put_var_end(h, 0, NULL, 0);
 			else
 				check_env(h, rd + i, data);
 		}
@@ -91,7 +91,7 @@ int check_var(var_ls **h, char *rd, char *st, data_sh *data)
  */
 char *replaced_input(var_ls **head, char *read, char *new_read, int nlen)
 {
-	r_var *indx;
+	var_ls *indx;
 	int i, j, k;
 
 	indx = *head;
@@ -140,7 +140,7 @@ char *replaced_input(var_ls **head, char *read, char *new_read, int nlen)
  */
 char *rep_var(char *read, data_sh *datash)
 {
-	r_var *head, *indx;
+	var_ls *head, *indx;
 	char *status, *new_read;
 	int olen, nlen;
 
@@ -160,7 +160,7 @@ char *rep_var(char *read, data_sh *datash)
 
 	while (indx != NULL)
 	{
-		nlen += (indx->len_val - indx->len_var);
+		nlen += (indx->len_vl - indx->len_var);
 		indx = indx->next;
 	}
 

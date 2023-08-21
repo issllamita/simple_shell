@@ -26,7 +26,7 @@ void set_env(char *name, char *value, data_sh *datash)
 		free(var_env);
 	}
 
-	datash->_env = _reallocdp(datash->_env, i, sizeof(char *) * (i + 2));
+	datash->_env = realloc_dp(datash->_env, i, sizeof(char *) * (i + 2));
 	datash->_env[i] = copy_data(name, value);
 	datash->_env[i + 1] = NULL;
 }

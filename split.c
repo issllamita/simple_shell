@@ -128,8 +128,8 @@ void _next(spt_ls **list_s, line_ls **list_l, data_sh *datash)
 int split_cmds(data_sh *datash, char *read)
 {
 
-	sep_list *head_s, *list_s;
-	line_list *head_l, *list_l;
+	spt_ls *head_s, *list_s;
+	line_ls *head_l, *list_l;
 	int loop;
 
 	head_s = NULL;
@@ -192,7 +192,7 @@ char **split_line(char *read)
 		if (i == bsize)
 		{
 			bsize += TOK_BUFSIZE;
-			tokens = _reallocdp(tokens, i, sizeof(char *) * bsize);
+			tokens = realloc_dp(tokens, i, sizeof(char *) * bsize);
 			if (tokens == NULL)
 			{
 				write(STDERR_FILENO, ": allocation error\n", 18);
