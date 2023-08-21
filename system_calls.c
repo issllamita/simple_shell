@@ -63,7 +63,7 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 	char *buffer;
 	char t = 'z';
 
-	if (read == 0)
+	if (input == 0)
 		fflush(stream);
 	else
 		return (-1);
@@ -75,7 +75,7 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 	while (t != '\n')
 	{
 		i = read(STDIN_FILENO, &t, 1);
-		if (i == -1 || (i == 0 && read == 0))
+		if (i == -1 || (i == 0 && input == 0))
 		{
 			free(buffer);
 			return (-1);
