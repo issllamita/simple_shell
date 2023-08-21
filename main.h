@@ -51,7 +51,7 @@ typedef struct line_list
 
 /**
  * struct spt_list - Single linled list to store separators
- * @spt: separators ; | &
+ * @sept: separators ; | &
  * @next: next node
  */
 typedef struct spt_list
@@ -178,7 +178,7 @@ int check_error_cmd(char *dir, data_sh *datash);
 int cmd_exec(data_sh *datash);
 
 /* env_func1.c */
-int cmp_env_name(const char *nenv, const char *name)
+int cmp_env_name(const char *nenv, const char *name);
 char *_getenv(const char *name, char **_env);
 int _env(data_sh *datash);
 char *copy_data(char *name, char *value);
