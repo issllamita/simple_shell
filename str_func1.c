@@ -24,7 +24,7 @@ char *_strcpy(char *dest, char *src)
  * @src: pointer to the second string
  * Return: pointer to the resulting string(dest)
  */
-char *_strcat(char *dest,const char *src)
+char *_strcat(char *dest, const char *src)
 {
 	int i;
 	int j;
