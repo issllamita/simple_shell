@@ -17,51 +17,51 @@ char *read_line(int *edf)
 
 /**
  * show_line - assigns the line var for get_line
- * @lineptr: Buffer that store the input str
+ * @linef: Buffer that store the input str
  * @buffer: str that is been called to line
- * @n: size of line
- * @j: size of buffer
+ * @m: size of line
+ * @k: size of buffer
  */
-void show_line(char **lineptr, size_t *n, char *buffer, size_t j)
+void show_line(char **linef, size_t *m, char *buffer, size_t k)
 {
 
-	if (*lineptr == NULL)
+	if (*linef == NULL)
 	{
-		if  (j > BUFSIZE)
-			*n = j;
+		if  (k > BUFSIZE)
+			*m = k;
 
 		else
-			*n = BUFSIZE;
-		*lineptr = buffer;
+			*m = BUFSIZE;
+		*linef = buffer;
 	}
-	else if (*n < j)
+	else if (*m < k)
 	{
-		if (j > BUFSIZE)
-			*n = j;
+		if (k > BUFSIZE)
+			*m = k;
 		else
-			*n = BUFSIZE;
-		*lineptr = buffer;
+			*m = BUFSIZE;
+		*linef = buffer;
 	}
 	else
 	{
-		_strcpy(*lineptr, buffer);
+		_strcpy(*linef, buffer);
 		free(buffer);
 	}
 }
 /**
  * get_line - Read inpt from stream
- * @lineptr: buffer that stores the input
- * @n: size of lineptr
+ * @linef: buffer that stores the input
+ * @m: size of lineptr
  * @stream: stream to read from
  * Return: The number of bytes
  */
-ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
+ssize_t get_line(char **linef, size_t *m, FILE *stream)
 {
-	int i;
+	int j;
 	static ssize_t input;
 	ssize_t retval;
 	char *buffer;
-	char t = 'z';
+	char u = 'z';
 
 	if (input == 0)
 		fflush(stream);
@@ -72,28 +72,28 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 	buffer = malloc(sizeof(char) * BUFSIZE);
 	if (buffer == 0)
 		return (-1);
-	while (t != '\n')
+	while (u != '\n')
 	{
-		i = read(STDIN_FILENO, &t, 1);
-		if (i == -1 || (i == 0 && input == 0))
+		j = read(STDIN_FILENO, &u, 1);
+		if (j == -1 || (j == 0 && input == 0))
 		{
 			free(buffer);
 			return (-1);
 		}
-		if (i == 0 && input != 0)
+		if (j == 0 && input != 0)
 		{
 			input++;
 			break;
 		}
 		if (input >= BUFSIZE)
 			buffer = _realloc(buffer, input, input + 1);
-		buffer[input] = t;
+		buffer[input] = u;
 		input++;
 	}
 	buffer[input] = '\0';
-	show_line(lineptr, n, buffer, input);
+	show_line(linef, m, buffer, input);
 	retval = input;
-	if (i != 0)
+	if (j != 0)
 		input = 0;
 	return (retval);
 }

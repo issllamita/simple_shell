@@ -47,7 +47,7 @@ void sh_loop(data_sh *datash)
 	loop = 1;
 	while (loop == 1)
 	{
-		write(STDIN_FILENO, "^-^ ", 4);
+		write(STDIN_FILENO, "$$ ", 4);
 		read = read_line(&i_eof);
 		if (i_eof != -1)
 		{
