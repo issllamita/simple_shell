@@ -16,9 +16,6 @@
 #define TOK_BUFSIZE 128
 #define  TOK_DELIM " \n\t\r\a"
 
-/* Double pointer to an array of characters "environment" */
-extern char **environ;
-
 /**
  * struct data - struct contains all relevant data
  * @argv: argument vector
@@ -89,6 +86,9 @@ typedef struct built_in
 	int (*f)(data_sh *datash);
 } builtin_s;
 
+/* Double pointer to an array of characters "environment" */
+extern char **environ;
+
 /* str_func1.c */
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, const char *src);
@@ -135,10 +135,7 @@ char *error_not_found(data_sh *datash);
 char *error_exit_shell(data_sh *datash);
 
 /* error_func2.c */
-char *error_get_alias(char **args);
 char *error_env(data_sh *datash);
-char *error_syntax(char **args);
-char *error_permission(char **args);
 char *error_path(data_sh *datash);
 
 /* get_func.c */
@@ -149,8 +146,8 @@ int (*get_builtin(char *cmd))(data_sh *datash);
 
 /* system_calls.c */
 char *read_line(int *edf);
-void show_line(char **lineptr, size_t *n, char *buffer, size_t j);
-ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
+void show_line(char **linef, size_t *m, char *buffer, size_t k);
+ssize_t get_line(char **linef, size_t *m, FILE *stream);
 int exec_line(data_sh *datash);
 
 /* shell_loop.c */
@@ -199,9 +196,9 @@ int cd_sh(data_sh *datash);
 int exit_sh(data_sh *datash);
 
 /* _stdlib.c */
-int get_len(int n);
-char *_itoa(int n);
-int _atoi(char *s);
+int get_len(int m);
+char *_itoa(int m);
+int _atoi(char *rs);
 
 /* help_func1.c */
 void help_env(void);
