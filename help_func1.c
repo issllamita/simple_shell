@@ -62,7 +62,7 @@ void help_general(void)
 	hlp = "[args]]\n  setenv: setenv [variable] [value]\n  unsetenv: ";
 	write(STDOUT_FILENO, hlp, _strlen(hlp));
 	hlp = "unsetenv [variable]\n";
-	write(STDOUT_FILENO, help, _strlen(hlp));
+	write(STDOUT_FILENO, hlp, _strlen(hlp));
 }
 /**
  * help_exit - Help information fot the builint exit
