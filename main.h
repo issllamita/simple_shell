@@ -38,6 +38,17 @@ typedef struct data
 } data_sh;
 
 /**
+ * struct spt_list - Single linled list to store separators
+ * @sept: separators ; | &
+ * @next: next node
+ */
+typedef struct spt_list
+{
+	char sept;
+	struct spt_list *next;
+} spt_ls;
+
+/**
  * struct line_list - Single linked list to store command lines
  * @line: command line
  * @next: next node
@@ -48,17 +59,6 @@ typedef struct line_list
 	char *line;
 	struct line_list *next;
 } line_ls;
-
-/**
- * struct spt_list - Single linled list to store separators
- * @sept: separators ; | &
- * @next: next node
- */
-typedef struct spt_list
-{
-	char sept;
-	struct spt_list *next;
-} spt_ls;
 
 /**
  * struct var_list - single linked list to store variables
