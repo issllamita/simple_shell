@@ -41,15 +41,15 @@ char *no_comment(char *rd)
  */
 void sh_loop(data_sh *datash)
 {
-	int loop, i_eof;
+	int loop, edf;
 	char *read;
 
 	loop = 1;
 	while (loop == 1)
 	{
-		write(STDIN_FILENO, "$$ ", 4);
-		read = read_line(&i_eof);
-		if (i_eof != -1)
+		write(STDIN_FILENO, "^-^ ", 4);
+		read = read_line(&edf);
+		if (edf != -1)
 		{
 			read = no_comment(read);
 			if (read == NULL)
