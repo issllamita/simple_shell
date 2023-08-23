@@ -14,7 +14,10 @@
 
 #define BUFSIZE 1024
 #define TOK_BUFSIZE 128
-#define  TOK_DELIM " \n\t\r\a"
+#define  TOK_DELIM " \t\r\n\a"
+
+/* Double pointer to an array of characters "environment" */
+extern char **environ;
 
 /**
  * struct data - struct contains all relevant data
@@ -85,9 +88,6 @@ typedef struct built_in
 	char *name;
 	int (*f)(data_sh *datash);
 } builtin_s;
-
-/* Double pointer to an array of characters "environment" */
-extern char **environ;
 
 /* str_func1.c */
 char *_strcpy(char *dest, char *src);
