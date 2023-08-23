@@ -46,7 +46,7 @@ int get_error(data_sh *datash, int eval)
 void get_sigint(int sig)
 {
 	(void)sig;
-	write(STDOUT_FILENO, "\n^-^ ", 5);
+	write(STDOUT_FILENO, "\n$$ ", 5);
 }
 
 /**
