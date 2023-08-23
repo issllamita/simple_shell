@@ -14,10 +14,7 @@
 
 #define BUFSIZE 1024
 #define TOK_BUFSIZE 128
-#define  TOK_DELIM " \t\r\n\a"
-
-/* Double pointer to an array of characters "environment" */
-extern char **environ;
+#define  TOK_DELIM " \n\t\r\a"
 
 /**
  * struct data - struct contains all relevant data
@@ -41,17 +38,6 @@ typedef struct data
 } data_sh;
 
 /**
- * struct spt_list - Single linled list to store separators
- * @sept: separators ; | &
- * @next: next node
- */
-typedef struct spt_list
-{
-	char sept;
-	struct spt_list *next;
-} spt_ls;
-
-/**
  * struct line_list - Single linked list to store command lines
  * @line: command line
  * @next: next node
@@ -62,6 +48,17 @@ typedef struct line_list
 	char *line;
 	struct line_list *next;
 } line_ls;
+
+/**
+ * struct spt_list - Single linled list to store separators
+ * @sept: separators ; | &
+ * @next: next node
+ */
+typedef struct spt_list
+{
+	char sept;
+	struct spt_list *next;
+} spt_ls;
 
 /**
  * struct var_list - single linked list to store variables
@@ -88,6 +85,9 @@ typedef struct built_in
 	char *name;
 	int (*f)(data_sh *datash);
 } builtin_s;
+
+/* Double pointer to an array of characters "environment" */
+extern char **environ;
 
 /* str_func1.c */
 char *_strcpy(char *dest, char *src);
